@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_splash">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="uz.madgeeks.mimovie.presentation.home.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_navigation_home_to_movieDetailFragment"
+            app:destination="@id/movieDetailFragment"
+            app:enterAnim="@anim/slide_in"
+            app:popUpToSaveState="true"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/slide_out"
+            app:popUpTo="@id/movieDetailFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_genre"
+        android:name="uz.madgeeks.mimovie.presentation.genres_list.GenresListFragment"
+        android:label="@string/title_dashboard"
+        tools:layout="@layout/fragment_genres_list">
+
+        <action
+            android:id="@+id/action_navigation_genre_to_genreFragment"
+            app:destination="@id/genreFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/slide_out"
+            app:popUpTo="@id/genreFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_navigation_genre_to_genreTVFragment"
+            app:destination="@id/genreTVFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/slide_out"
+            app:popUpTo="@id/genreTVFragment"
+            app:popUpToInclusive="true"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_splash"
+        android:name="uz.madgeeks.mimovie.presentation.SplashFragment"
+        android:label=""
+        tools:layout="@layout/fragment_splash">
+        <action
+            android:id="@+id/action_splashFragment_to_navigation_home"
+            app:destination="@id/navigation_home"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/slide_out"
+            app:popUpTo="@id/navigation_splash"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/movieDetailFragment"
+        android:name="uz.madgeeks.mimovie.presentation.movie_detail.MovieDetailFragment"
+        android:label=""
+        tools:layout="@layout/fragment_movie_detail_third">
+        <action
+            android:id="@+id/action_movieDetailFragment_to_genreFragment"
+            app:destination="@id/genreFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/slide_out"
+            app:popUpTo="@id/genreFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_movieDetailFragment_to_youtubeActivity"
+            app:destination="@id/youtubeActivity"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/slide_out"
+            app:popUpTo="@id/youtubeActivity"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_movieDetailFragment_to_imageViewerFragment"
+            app:destination="@id/imageViewerFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/slide_out"
+            app:popUpTo="@id/imageViewerFragment"
+            app:popUpToInclusive="true"/>
+        <action
+            android:id="@+id/action_movieDetailFragment_to_actorsFragment"
+            app:destination="@id/actorsFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/slide_out"
+            app:popUpTo="@id/actorsFragment"
+            app:popUpToInclusive="true"/>
+    </fragment>
+    <fragment
+        android:id="@+id/genreFragment"
+        android:name="uz.madgeeks.mimovie.presentation.genre.GenreFragment"
+        android:label="Genre"
+        tools:layout="@layout/fragment_genre">
+
+        <action
+            android:id="@+id/action_genre_to_movieDetailFragment"
+            app:destination="@id/movieDetailFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/slide_out"
+            app:popUpTo="@id/movieDetailFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_genreFragment_to_genreTVFragment"
+            app:destination="@id/genreTVFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/slide_out"
+            app:popUpTo="@id/genreTVFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_actors"
+        android:name="uz.madgeeks.mimovie.presentation.actors_list.ActorsListFragment"
+        android:label="Famous Actors"
+        tools:layout="@layout/fragment_actors_list">
+        <action
+            android:id="@+id/action_navigation_actors_to_actorsFragment"
+            app:destination="@id/actorsFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/slide_out"
+            app:popUpTo="@id/actorsFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/actorsFragment"
+        android:name="uz.madgeeks.mimovie.presentation.actors.ActorsFragment"
+        android:label=""
+        tools:layout="@layout/fragment_actors" >
+        <action
+            android:id="@+id/action_actorsFragment_to_imageViewerFragment"
+            app:destination="@id/imageViewerFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/slide_out"
+            app:popUpTo="@id/imageViewerFragment"
+            app:popUpToInclusive="true"/>
+    </fragment>
+    <activity
+        android:id="@+id/youtubeActivity"
+        android:name="uz.madgeeks.mimovie.presentation.YoutubeActivity"
+        android:label="activity_youtube"
+        tools:layout="@layout/activity_youtube" />
+
+    <fragment
+        android:id="@+id/navigation_search"
+        android:name="uz.madgeeks.mimovie.presentation.search.SearchFragment"
+        tools:layout="@layout/fragment_search"
+        android:label="@string/search" >
+        <action
+            android:id="@+id/action_navigation_search_to_movieDetailFragment"
+            app:destination="@id/movieDetailFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/slide_out"
+            app:popUpTo="@id/movieDetailFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_tvshows"
+        android:name="uz.madgeeks.mimovie.presentation.tv_shows.TVShowsFragment"
+        android:label="TV Shows"
+        tools:layout="@layout/fragment_t_v_shows" >
+        <action
+            android:id="@+id/action_navigation_tvshows_to_TVShowDetailFragment"
+            app:destination="@id/TVShowDetailFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/slide_out"
+            app:popUpTo="@id/TVShowDetailFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/imageViewerFragment"
+        android:name="uz.madgeeks.mimovie.presentation.ImageViewerFragment"
+        tools:layout="@layout/fragment_image_viewer"
+        android:label="" />
+    <fragment
+        android:id="@+id/TVShowDetailFragment"
+        android:name="uz.madgeeks.mimovie.presentation.tv_show_details.TVShowDetailFragment"
+        android:label=""
+        tools:layout="@layout/fragment_t_v_show_detail" >
+        <action
+            android:id="@+id/action_TVShowDetailFragment_to_imageViewerFragment"
+            app:destination="@id/imageViewerFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/slide_out"
+            app:popUpTo="@id/imageViewerFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_TVShowDetailFragment_to_genreTVFragment"
+            app:destination="@id/genreTVFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/slide_out"
+            app:popUpTo="@id/TVShowDetailFragment"
+            app:popUpToInclusive="true"/>
+        <action
+            android:id="@+id/action_TVShowDetailFragment_to_actorsFragment"
+            app:destination="@id/actorsFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/slide_out"
+            app:popUpTo="@id/actorsFragment"
+            app:popUpToInclusive="true"/>
+    </fragment>
+    <fragment
+        android:id="@+id/genreTVFragment"
+        android:name="uz.madgeeks.mimovie.presentation.genre.GenreTVFragment"
+        android:label="fragment_genre_t_v"
+        tools:layout="@layout/fragment_genre_t_v" >
+        <action
+            android:id="@+id/action_genreTVFragment_to_TVShowDetailFragment"
+            app:destination="@id/TVShowDetailFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/slide_out"
+            app:popUpTo="@id/TVShowDetailFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+</navigation>

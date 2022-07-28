@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/swipeRefresh"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/deep_blue"
+    tools:context=".presentation.genres_list.GenresListFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <nl.joery.animatedbottombar.AnimatedBottomBar
+            android:id="@+id/allGenresTab"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/deep_blue"
+            app:abb_indicatorAppearance="round"
+            app:abb_indicatorColor="@color/deep_blue_0"
+            app:abb_indicatorHeight="4dp"
+            app:abb_indicatorLocation="bottom"
+            app:abb_indicatorMargin="16dp"
+            app:abb_selectedIndex="0"
+            app:abb_selectedTabType="icon"
+            app:abb_tabColor="@color/deep_blue_400"
+            app:abb_tabColorSelected="@color/deep_blue_0"
+            app:abb_tabs="@menu/genre_tab"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/allGenresList"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="@dimen/margin_padding_8"
+            android:gravity="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/allGenresTab"
+            tools:listitem="@layout/item_genre" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/allGenresTVList"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:visibility="gone"
+            android:layout_margin="@dimen/margin_padding_8"
+            android:gravity="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/allGenresTab"
+            tools:listitem="@layout/item_genre" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
