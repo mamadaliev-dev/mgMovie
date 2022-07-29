@@ -62,6 +62,23 @@ class TVShowsRepositoryImpl @Inject constructor(private val service: TVShowsServ
         }
     }
 
+    override suspend fun getAiringTodayTVShows(@Query(value = "api_key") closeReason: String): Flow<BaseNetworkResult<TVShowsResponse>> {
+        return flow {
+            emit(BaseNetworkResult.Loading(true))
+            val response = service.getAiringTodayTVShows()
+            emit(BaseNetworkResult.Loading(false))
+            if (response.code() == 200) {
+                emit(BaseNetworkResult.Success(response.body() ?: TVShowsResponse(0,
+                    listOf(TVShowsResult("", "",
+                        listOf(0, 1), 0, "",
+                        listOf("US"), "", "", "", 0.1, "", 0.1, 0)
+                    ), 0, 0)))
+            } else {
+                emit(BaseNetworkResult.Error("Xatolik"))
+            }
+        }
+    }
+
     override suspend fun getSearchedTVShows(query: String): Flow<BaseNetworkResult<TVShowsResponse>> {
         return flow {
             emit(BaseNetworkResult.Loading(true))

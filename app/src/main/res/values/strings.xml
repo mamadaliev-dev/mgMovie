@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">mgMovie</string>
-    <string name="title_home">Movies</string>
+    <string name="title_home">mgMovie</string>
     <string name="title_dashboard">Genres</string>
     <string name="title_notifications">Famous Actors</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -29,4 +29,5 @@
     <string name="search_movies">Search</string>
     <string name="tv_shows">TV Shows</string>
     <string name="movies">Movies</string>
+    <string name="home">Home</string>
 </resources>

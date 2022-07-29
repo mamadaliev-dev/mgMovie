@@ -29,8 +29,6 @@ class MovieTrailerAdapter : RecyclerView.Adapter<MovieTrailerAdapter.HomeMovieVi
         @SuppressLint("SetTextI18n")
         fun bindView(data: MovieTrailerResponse) {
             binding.apply {
-                name.text = data.name
-
                 Glide.with(binding.root.context)
                     .load("https://img.youtube.com/vi/${data.key}/mqdefault.jpg")
                     .into(binding.image)

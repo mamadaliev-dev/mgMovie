@@ -30,6 +30,9 @@ class TVShowsViewModel @Inject constructor(
     private val onTheAirTVShowsList = MutableLiveData<List<TVShowsResult>?>()
     val onTheAirTVShowsListLiveData: LiveData<List<TVShowsResult>?> get() = onTheAirTVShowsList
 
+    private val airingTodayTVShowsList = MutableLiveData<List<TVShowsResult>?>()
+    val airingTodayTVShowsListLiveData: LiveData<List<TVShowsResult>?> get() = airingTodayTVShowsList
+
     private val _isLoadingLiveData = MutableLiveData<Boolean>()
     val isLoadingLiveData: LiveData<Boolean> get() = _isLoadingLiveData
 
@@ -115,7 +118,33 @@ class TVShowsViewModel @Inject constructor(
         }
     }
 
-    fun getSearchedTVShows(query : String) {
+    fun getAiringTodayTVShows() {
+        viewModelScope.launch {
+            mainUseCase.getAiringTodayTVShows().catch {
+                Log.d("DDDD", "getServicesResponse: $this")
+            }.collect { result ->
+                when (result) {
+                    is BaseNetworkResult.Success -> {
+                        result.data?.let { list ->
+                            airingTodayTVShowsList.value = list.results
+                        }
+                    }
+                    is BaseNetworkResult.Error -> {
+                        result.message.let {
+                            _errorLiveData.value = it
+                        }
+                    }
+                    is BaseNetworkResult.Loading -> {
+                        result.isLoading?.let {
+                            _isLoadingLiveData.value = it
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    fun getSearchedTVShows(query: String) {
         viewModelScope.launch {
             mainUseCase.getSearchedTVShows(query).catch {
                 Log.d("DDDD", "getServicesResponse: $this")

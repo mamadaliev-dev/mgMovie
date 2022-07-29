@@ -3,12 +3,11 @@ package uz.madgeeks.mimovie.presentation.home
 import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
-import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.denzcoskun.imageslider.constants.ScaleTypes
 import com.denzcoskun.imageslider.interfaces.ItemClickListener
 import com.denzcoskun.imageslider.models.SlideModel
 import dagger.hilt.android.AndroidEntryPoint
-import nl.joery.animatedbottombar.AnimatedBottomBar
 import uz.madgeeks.mimovie.BuildConfig
 import uz.madgeeks.mimovie.R
 import uz.madgeeks.mimovie.databinding.FragmentHomeBinding
@@ -22,11 +21,32 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
         HomeMovieLatestAdapter()
     }
 
+    val adapterPop by lazy {
+        HomeMovieLatestAdapter()
+    }
+
+    val adapterUp by lazy {
+        HomeMovieLatestAdapter()
+    }
+
     override fun onViewCreate() {
+        viewModel.getAllNewMovies()
+        viewModel.getAllPopularMovies()
+        viewModel.getAllTopRatedMovies()
+        viewModel.getAllUpcomingMovies()
+
         binding.apply {
-            allMoviesList.layoutManager = GridLayoutManager(requireContext(),
-                2, GridLayoutManager.VERTICAL, false);
-            allMoviesList.adapter = adapter
+            topRatedMoviesList.layoutManager = LinearLayoutManager(requireContext(),
+                LinearLayoutManager.HORIZONTAL, false)
+            topRatedMoviesList.adapter = adapter
+
+            populartMoviesList.layoutManager = LinearLayoutManager(requireContext(),
+                LinearLayoutManager.HORIZONTAL, false)
+            populartMoviesList.adapter = adapterPop
+
+            upcomingMoviesList.layoutManager = LinearLayoutManager(requireContext(),
+                LinearLayoutManager.HORIZONTAL, false)
+            upcomingMoviesList.adapter = adapterUp
         }
 
         viewModel.errorLiveData.observe(viewLifecycleOwner) {
@@ -51,11 +71,28 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
             navController.navigate(R.id.action_navigation_home_to_movieDetailFragment, bundle)
         }
 
-        viewModel.moviesListLiveData.observe(viewLifecycleOwner) {
+        adapterUp.setItemClickListener {
+            val bundle = bundleOf("MOVIE_ID" to it)
+            navController.navigate(R.id.action_navigation_home_to_movieDetailFragment, bundle)
+        }
+
+        adapterPop.setItemClickListener {
+            val bundle = bundleOf("MOVIE_ID" to it)
+            navController.navigate(R.id.action_navigation_home_to_movieDetailFragment, bundle)
+        }
+
+        viewModel.topRatedMovieListLiveData.observe(viewLifecycleOwner) {
             adapter.setMovies(it)
         }
 
-        viewModel.getAllNewMovies()
+        viewModel.popularMovieListLiveData.observe(viewLifecycleOwner) {
+            adapterPop.setMovies(it)
+        }
+
+        viewModel.upcomingMovieListLiveData.observe(viewLifecycleOwner) {
+            adapterUp.setMovies(it)
+        }
+
         viewModel.moviesListLiveData.observe(this) { result ->
             val imageList = ArrayList<SlideModel>() // Create image list
             val positions = ArrayList<Long>() // Create image list
@@ -78,40 +115,5 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
                 }
             })
         }
-
-        viewModel.getAllPopularMovies()
-        viewModel.getAllTopRatedMovies()
-        viewModel.getAllUpcomingMovies()
-
-        binding.bottomBar.setOnTabSelectListener(object : AnimatedBottomBar.OnTabSelectListener {
-            override fun onTabSelected(
-                lastIndex: Int,
-                lastTab: AnimatedBottomBar.Tab?,
-                newIndex: Int,
-                newTab: AnimatedBottomBar.Tab,
-            ) {
-                when (newTab.title) {
-                    "TOP RATED" -> {
-                        viewModel.topRatedMovieListLiveData.observe(viewLifecycleOwner) {
-                            adapter.setMovies(it)
-                        }
-                    }
-                    "POPULAR" -> {
-                        viewModel.popularMovieListLiveData.observe(viewLifecycleOwner) {
-                            adapter.setMovies(it)
-                        }
-                    }
-                    "UPCOMING" -> {
-                        viewModel.upcomingMovieListLiveData.observe(viewLifecycleOwner) {
-                            adapter.setMovies(it)
-                        }
-                    }
-                }
-            }
-
-            override fun onTabReselected(index: Int, tab: AnimatedBottomBar.Tab) {
-
-            }
-        })
     }
 }

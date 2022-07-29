@@ -21,6 +21,10 @@ class TVShowsUseCase @Inject constructor(private val homeRepository: TVShowsRepo
         return homeRepository.getOnTheAirTVShows()
     }
 
+    suspend fun getAiringTodayTVShows(): Flow<BaseNetworkResult<TVShowsResponse>> {
+        return homeRepository.getAiringTodayTVShows()
+    }
+
     suspend fun getSearchedTVShows(query: String): Flow<BaseNetworkResult<TVShowsResponse>> {
         return homeRepository.getSearchedTVShows(query)
     }

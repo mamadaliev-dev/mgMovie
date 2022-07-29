@@ -43,10 +43,8 @@ class TVShowDetailFragment :
     @SuppressLint("SetTextI18n")
     override fun onViewCreate() {
         binding.apply {
-            trailersList.layoutManager = LinearLayoutManager(
-                requireContext(),
-                LinearLayoutManager.VERTICAL,
-                false)
+            trailersList.layoutManager = LinearLayoutManager(requireContext(),
+                LinearLayoutManager.HORIZONTAL, false)
             trailersList.adapter = adapterTrailer
 
             castList.layoutManager = GridLayoutManager(requireContext(),
@@ -56,7 +54,6 @@ class TVShowDetailFragment :
             allGenresList.layoutManager = LinearLayoutManager(requireContext(),
                 LinearLayoutManager.HORIZONTAL, false)
             allGenresList.adapter = adapter
-
         }
 
         adapter.setItemClickListener { id, name ->
@@ -147,40 +144,5 @@ class TVShowDetailFragment :
             intent.putExtra("YOUTUBE_VIDEO_ID", it)
             startActivity(intent)
         }
-
-        binding.movieTab.setOnTabSelectListener(object : AnimatedBottomBar.OnTabSelectListener {
-            override fun onTabSelected(
-                lastIndex: Int,
-                lastTab: AnimatedBottomBar.Tab?,
-                newIndex: Int,
-                newTab: AnimatedBottomBar.Tab,
-            ) {
-                when (newTab.title) {
-                    "About" -> {
-                        binding.castList.visibility = View.GONE
-                        binding.linearLayoutCompat3.visibility = View.VISIBLE
-                        binding.trailersList.visibility = View.GONE
-                    }
-
-                    "Videos" -> {
-                        binding.castList.visibility = View.GONE
-                        binding.linearLayoutCompat3.visibility = View.GONE
-                        binding.trailersList.visibility = View.VISIBLE
-
-                    }
-
-                    "Cast" -> {
-                        binding.castList.visibility = View.VISIBLE
-                        binding.trailersList.visibility = View.GONE
-                        binding.linearLayoutCompat3.visibility = View.GONE
-                    }
-                }
-            }
-
-            override fun onTabReselected(index: Int, tab: AnimatedBottomBar.Tab) {
-
-            }
-
-        })
     }
 }

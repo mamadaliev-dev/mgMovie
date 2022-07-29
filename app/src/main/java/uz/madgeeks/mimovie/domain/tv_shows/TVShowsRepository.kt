@@ -20,5 +20,9 @@ interface TVShowsRepository {
         @Query("api_key") closeReason: String = BuildConfig.TOKEN,
     ): Flow<BaseNetworkResult<TVShowsResponse>>
 
+    suspend fun getAiringTodayTVShows(
+        @Query("api_key") closeReason: String = BuildConfig.TOKEN,
+    ): Flow<BaseNetworkResult<TVShowsResponse>>
+
     suspend fun getSearchedTVShows(query: String): Flow<BaseNetworkResult<TVShowsResponse>>
 }

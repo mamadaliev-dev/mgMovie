@@ -41,39 +41,79 @@
                     android:id="@+id/mainLayout"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/margin_padding_16"
+                    android:layout_marginTop="@dimen/margin_padding_8"
                     android:orientation="vertical"
                     app:layout_constraintTop_toBottomOf="@+id/search">
 
-                    <com.google.android.material.tabs.TabLayout
-                        android:id="@+id/bottomBar"
+                    <androidx.appcompat.widget.AppCompatTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@color/deep_blue"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/search"
-                        app:tabGravity="center"
-                        app:tabIndicatorColor="@color/deep_blue_0"
-                        app:tabIndicatorHeight="2dp"
-                        app:tabMode="scrollable"
-                        app:tabRippleColor="@color/deep_blue_0"
-                        app:tabSelectedTextColor="@color/deep_blue_0"
-                        app:tabTextColor="@color/deep_blue_400" />
+                        android:layout_marginTop="@dimen/margin_padding_8"
+                        android:fontFamily="@font/poppins_medium"
+                        android:text="Top Rated"
+                        android:textColor="@color/deep_blue_0"
+                        android:textSize="20sp" />
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/tvshowsList"
+                        tools:listitem="@layout/item_tvshows"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        app:layout_constraintTop_toBottomOf="@+id/bottomBar" />
+                        android:layout_height="match_parent" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_medium"
+                        android:layout_marginTop="@dimen/margin_padding_8"
+                        android:text="Popular"
+                        android:textColor="@color/deep_blue_0"
+                        android:textSize="20sp" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/populartTVshowsList"
+                        tools:listitem="@layout/item_tvshows"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_medium"
+                        android:layout_marginTop="@dimen/margin_padding_8"
+                        android:text="On the air"
+                        android:textColor="@color/deep_blue_0"
+                        android:textSize="20sp" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/onTheAirTVshowsList"
+                        android:layout_width="match_parent"
+                        tools:listitem="@layout/item_tvshows"
+                        android:layout_height="match_parent" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_medium"
+                        android:layout_marginTop="@dimen/margin_padding_8"
+                        android:text="Airing today"
+                        android:textColor="@color/deep_blue_0"
+                        android:textSize="20sp" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/airingTVshowsList"
+                        android:layout_width="match_parent"
+                        tools:listitem="@layout/item_tvshows"
+                        android:layout_height="match_parent" />
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/searchedTVshowsList"
                     android:layout_width="match_parent"
-                    android:visibility="gone"
                     android:layout_height="match_parent"
-                    tools:listitem="@layout/item_tvshows"
-                    app:layout_constraintTop_toBottomOf="@+id/search" />
+                    android:visibility="gone"
+                    app:layout_constraintTop_toBottomOf="@+id/search"
+                    tools:listitem="@layout/item_tvshows" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.appcompat.widget.LinearLayoutCompat>

@@ -8,7 +8,6 @@ import uz.madgeeks.mimovie.BuildConfig
 import uz.madgeeks.mimovie.data.movie_detail.model.remote.response.Credits
 import uz.madgeeks.mimovie.data.movie_detail.model.remote.response.MovieDetailResponse
 import uz.madgeeks.mimovie.data.movie_detail.model.remote.response.MovieTrailerRes
-import uz.madgeeks.mimovie.data.movie_detail.model.remote.response.Review
 
 interface MovieDetailService {
     @GET("movie/{movie_id}")
@@ -23,13 +22,7 @@ interface MovieDetailService {
         @Query("api_key") closeReason: String = BuildConfig.TOKEN,
     ): Response<MovieTrailerRes>
 
-    @GET("/3/movie/{movie_id}/reviews")
-    suspend fun getReviews(
-        @Path("movie_id") movie_id: Long,
-        @Query("api_key") closeReason: String = BuildConfig.TOKEN,
-    ): Response<List<Review>>
-
-    @GET("/3/movie/{movie_id}/credits")
+    @GET("movie/{movie_id}/credits")
     suspend fun getCredits(
         @Path("movie_id") movie_id: Long,
         @Query("api_key") closeReason: String = BuildConfig.TOKEN,

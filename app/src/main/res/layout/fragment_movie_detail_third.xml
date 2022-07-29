@@ -72,48 +72,6 @@
                     app:layout_constraintStart_toEndOf="@+id/poster"
                     app:layout_constraintTop_toBottomOf="@+id/name" />
 
-                <nl.joery.animatedbottombar.AnimatedBottomBar
-                    android:id="@+id/movieTab"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/deep_blue"
-                    android:visibility="visible"
-                    app:abb_indicatorAppearance="round"
-                    app:abb_indicatorColor="@color/deep_blue_0"
-                    app:abb_indicatorHeight="4dp"
-                    app:abb_indicatorLocation="bottom"
-                    app:abb_indicatorMargin="16dp"
-                    app:abb_selectedIndex="0"
-                    app:abb_selectedTabType="icon"
-                    app:abb_tabColor="@color/deep_blue_400"
-                    app:abb_tabColorSelected="@color/deep_blue_0"
-                    app:abb_tabs="@menu/movie_detail_tab"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/poster" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/trailersList"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="@dimen/margin_padding_16"
-                    android:visibility="gone"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/movieTab"
-                    tools:listitem="@layout/item_review" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/castList"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:visibility="gone"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/movieTab" />
-
                 <androidx.appcompat.widget.LinearLayoutCompat
                     android:id="@+id/linearLayoutCompat3"
                     android:layout_width="match_parent"
@@ -124,14 +82,14 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/movieTab">
+                    app:layout_constraintTop_toBottomOf="@+id/poster">
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_padding_16"
                         android:fontFamily="@font/poppins_medium"
                         android:text="@string/rating"
-                        android:layout_marginTop="@dimen/margin_padding_16"
                         android:textColor="@color/deep_blue_400"
                         android:textSize="12sp" />
 
@@ -161,8 +119,8 @@
                             <androidx.appcompat.widget.AppCompatTextView
                                 android:id="@+id/voteCount"
                                 android:layout_width="wrap_content"
-                                android:layout_marginStart="@dimen/margin_padding_16"
                                 android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/margin_padding_16"
                                 android:fontFamily="@font/poppins_regular"
                                 android:textColor="@color/white" />
 
@@ -179,9 +137,9 @@
                         <androidx.appcompat.widget.AppCompatTextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/margin_padding_16"
                             android:fontFamily="@font/poppins_medium"
                             android:text="Genres"
-                            android:layout_marginTop="@dimen/margin_padding_16"
                             android:textColor="@color/deep_blue_400"
                             android:textSize="12sp" />
 
@@ -196,9 +154,9 @@
                     <androidx.appcompat.widget.AppCompatTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_padding_8"
                         android:fontFamily="@font/poppins_medium"
                         android:text="@string/overview"
-                        android:layout_marginTop="@dimen/margin_padding_8"
                         android:textColor="@color/deep_blue_400"
                         android:textSize="12sp" />
 
@@ -335,6 +293,37 @@
                             android:textColor="@color/white" />
 
                     </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_padding_16"
+                        android:fontFamily="@font/poppins_medium"
+                        android:text="Videos"
+                        android:textColor="@color/deep_blue_400"
+                        android:textSize="12sp" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/trailersList"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:visibility="visible"
+                        tools:listitem="@layout/item_movie_trailer" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_padding_16"
+                        android:fontFamily="@font/poppins_medium"
+                        android:text="Cast"
+                        android:textColor="@color/deep_blue_400"
+                        android:textSize="12sp" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/castList"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        tools:listitem="@layout/item_genre_mini" />
 
                     <Space
                         android:layout_width="match_parent"

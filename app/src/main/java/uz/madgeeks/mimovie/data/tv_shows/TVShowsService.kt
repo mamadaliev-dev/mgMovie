@@ -23,6 +23,11 @@ interface TVShowsService {
         @Query("api_key") closeReason: String = BuildConfig.TOKEN,
     ): Response<TVShowsResponse>
 
+    @GET("tv/airing_today")
+    suspend fun getAiringTodayTVShows(
+        @Query("api_key") closeReason: String = BuildConfig.TOKEN,
+    ): Response<TVShowsResponse>
+
     @GET("search/tv")
     suspend fun getSearchedTVShows(
         @Query("api_key") closeReason: String = BuildConfig.TOKEN,
