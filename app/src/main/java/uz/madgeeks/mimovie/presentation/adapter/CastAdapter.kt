@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import uz.madgeeks.mimovie.BuildConfig
+import uz.madgeeks.mimovie.R
 import uz.madgeeks.mimovie.data.movie_detail.model.remote.response.Cast
 import uz.madgeeks.mimovie.databinding.ItemActorBinding
 
@@ -34,6 +35,7 @@ class CastAdapter : RecyclerView.Adapter<CastAdapter.MovieCardViewHolder>() {
                 character.text = data.character
                 Glide.with(binding.root.context)
                     .load("${BuildConfig.BASE_IMAGE_URL}${data.profilePath}")
+                    .placeholder(R.drawable.ic_actor)
                     .into(binding.image)
 
                 itemView.setOnClickListener {
