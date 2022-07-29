@@ -66,6 +66,11 @@ class TVShowsFragment : BaseFragment<FragmentTVShowsBinding>(FragmentTVShowsBind
 
         viewModel.isLoadingLiveData.observe(viewLifecycleOwner) {
             binding.swipeRefresh.isRefreshing = it
+            if (it == true){
+                binding.mainLayout.visibility = View.GONE
+            } else {
+                binding.mainLayout.visibility = View.VISIBLE
+            }
         }
 
         adapter.setItemClickListener {

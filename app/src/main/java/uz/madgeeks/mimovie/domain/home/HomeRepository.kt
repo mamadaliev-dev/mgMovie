@@ -12,10 +12,4 @@ interface HomeRepository {
     suspend fun getAllTopRatedMovies() : Flow<BaseNetworkResult<List<MovieResultDto>>>
 
     suspend fun getAllUpcomingMovies() : Flow<BaseNetworkResult<List<MovieResultDto>>>
-
-
-//    suspend fun getAllFamousPersons() : Flow<BaseNetworkResult<ActorsResponse>>
-
-//    suspend fun getDailyPopularTvShows() : Flow<BaseNetworkResult<List<MovieResultDto>>>
-
 }

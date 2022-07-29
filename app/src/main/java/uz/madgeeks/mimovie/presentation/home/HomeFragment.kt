@@ -1,5 +1,6 @@
 package uz.madgeeks.mimovie.presentation.home
 
+import android.view.View
 import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
@@ -55,6 +56,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
 
         viewModel.isLoadingLiveData.observe(viewLifecycleOwner) {
             binding.swipeRefresh.isRefreshing = it
+            if (it == true){
+                binding.mainLayout.visibility = View.GONE
+            } else {
+                binding.mainLayout.visibility = View.VISIBLE
+            }
         }
 
         binding.swipeRefresh.setOnRefreshListener {
@@ -106,7 +112,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
                 )
             }
 
-            binding.imageSlider.setImageList(imageList, ScaleTypes.FIT)
+
+            binding.imageSlider.setImageList(imageList, ScaleTypes.CENTER_CROP)
             binding.imageSlider.setItemClickListener(object : ItemClickListener {
                 override fun onItemSelected(position: Int) {
                     val bundle = bundleOf("MOVIE_ID" to positions[position])
