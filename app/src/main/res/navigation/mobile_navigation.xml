@@ -66,7 +66,7 @@
     <fragment
         android:id="@+id/movieDetailFragment"
         android:name="uz.madgeeks.mimovie.presentation.movie_detail.MovieDetailFragment"
-        android:label=""
+        android:label="About Movie"
         tools:layout="@layout/fragment_movie_detail_third">
         <action
             android:id="@+id/action_movieDetailFragment_to_genreFragment"
@@ -149,7 +149,7 @@
     <fragment
         android:id="@+id/actorsFragment"
         android:name="uz.madgeeks.mimovie.presentation.actors.ActorsFragment"
-        android:label=""
+        android:label="About Actor"
         tools:layout="@layout/fragment_actors" >
         <action
             android:id="@+id/action_actorsFragment_to_imageViewerFragment"
@@ -238,7 +238,7 @@
     <fragment
         android:id="@+id/genreTVFragment"
         android:name="uz.madgeeks.mimovie.presentation.genre.GenreTVFragment"
-        android:label="fragment_genre_t_v"
+        android:label=""
         tools:layout="@layout/fragment_genre_t_v" >
         <action
             android:id="@+id/action_genreTVFragment_to_TVShowDetailFragment"
