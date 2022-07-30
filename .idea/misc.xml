@@ -30,6 +30,7 @@
         <entry key="..\:/PDP/miMovie/app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.146" />
         <entry key="..\:/PDP/miMovie/app/src/main/res/drawable/ic_movie.xml" value="0.146" />
         <entry key="..\:/PDP/miMovie/app/src/main/res/drawable/ic_multi_bubble.xml" value="0.146" />
+        <entry key="..\:/PDP/miMovie/app/src/main/res/drawable/ic_nav_arrow.xml" value="0.146" />
         <entry key="..\:/PDP/miMovie/app/src/main/res/drawable/ic_no_results.xml" value="0.146" />
         <entry key="..\:/PDP/miMovie/app/src/main/res/drawable/ic_play_outlined.xml" value="0.146" />
         <entry key="..\:/PDP/miMovie/app/src/main/res/drawable/ic_playlist_play_svgrepo_com.xml" value="0.146" />
@@ -45,11 +46,12 @@
         <entry key="..\:/PDP/miMovie/app/src/main/res/drawable/shape_search.xml" value="0.146" />
         <entry key="..\:/PDP/miMovie/app/src/main/res/drawable/shape_transparent.xml" value="0.146" />
         <entry key="..\:/PDP/miMovie/app/src/main/res/drawable/shape_unselected.xml" value="0.146" />
-        <entry key="..\:/PDP/miMovie/app/src/main/res/layout-v23/fragment_actors.xml" value="0.2" />
+        <entry key="..\:/PDP/miMovie/app/src/main/res/layout-v23/fragment_actors.xml" value="0.25" />
         <entry key="..\:/PDP/miMovie/app/src/main/res/layout-v23/fragment_actors_list.xml" value="0.20416666666666666" />
         <entry key="..\:/PDP/miMovie/app/src/main/res/layout-v23/fragment_movie_detail_second.xml" value="0.20416666666666666" />
         <entry key="..\:/PDP/miMovie/app/src/main/res/layout-v23/fragment_search.xml" value="0.22" />
         <entry key="..\:/PDP/miMovie/app/src/main/res/layout-v23/item_actor_vertical.xml" value="0.20416666666666666" />
+        <entry key="..\:/PDP/miMovie/app/src/main/res/layout-v23/item_tv_show_vertical.xml" value="0.18" />
         <entry key="..\:/PDP/miMovie/app/src/main/res/layout/activity_image_viewer.xml" value="0.20416666666666666" />
         <entry key="..\:/PDP/miMovie/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/PDP/miMovie/app/src/main/res/layout/activity_youtube.xml" value="0.20416666666666666" />
@@ -59,30 +61,36 @@
         <entry key="..\:/PDP/miMovie/app/src/main/res/layout/fragment_genres_list.xml" value="0.19010416666666666" />
         <entry key="..\:/PDP/miMovie/app/src/main/res/layout/fragment_home.xml" value="0.17" />
         <entry key="..\:/PDP/miMovie/app/src/main/res/layout/fragment_image_viewer.xml" value="0.20416666666666666" />
+        <entry key="..\:/PDP/miMovie/app/src/main/res/layout/fragment_movie_cast.xml" value="0.20416666666666666" />
         <entry key="..\:/PDP/miMovie/app/src/main/res/layout/fragment_movie_detail.xml" value="0.16795580110497238" />
         <entry key="..\:/PDP/miMovie/app/src/main/res/layout/fragment_movie_detail_second.xml" value="0.25" />
-        <entry key="..\:/PDP/miMovie/app/src/main/res/layout/fragment_movie_detail_third.xml" value="0.2664853840924541" />
+        <entry key="..\:/PDP/miMovie/app/src/main/res/layout/fragment_movie_detail_third.xml" value="0.18946350894151764" />
         <entry key="..\:/PDP/miMovie/app/src/main/res/layout/fragment_sign_up.xml" value="0.19010416666666666" />
         <entry key="..\:/PDP/miMovie/app/src/main/res/layout/fragment_splash.xml" value="0.25" />
-        <entry key="..\:/PDP/miMovie/app/src/main/res/layout/fragment_t_v_show_detail.xml" value="0.22" />
-        <entry key="..\:/PDP/miMovie/app/src/main/res/layout/fragment_t_v_shows.xml" value="0.1" />
+        <entry key="..\:/PDP/miMovie/app/src/main/res/layout/fragment_t_v_show_detail.xml" value="0.2994652406417112" />
+        <entry key="..\:/PDP/miMovie/app/src/main/res/layout/fragment_t_v_shows.xml" value="0.33" />
+        <entry key="..\:/PDP/miMovie/app/src/main/res/layout/fragment_trailers.xml" value="0.20416666666666666" />
         <entry key="..\:/PDP/miMovie/app/src/main/res/layout/fragment_tv_shows.xml" value="0.20416666666666666" />
-        <entry key="..\:/PDP/miMovie/app/src/main/res/layout/item_actor.xml" value="0.20416666666666666" />
+        <entry key="..\:/PDP/miMovie/app/src/main/res/layout/item_actor.xml" value="0.25" />
+        <entry key="..\:/PDP/miMovie/app/src/main/res/layout/item_actor_credit_in_movie.xml" value="0.20416666666666666" />
         <entry key="..\:/PDP/miMovie/app/src/main/res/layout/item_company.xml" value="0.25" />
         <entry key="..\:/PDP/miMovie/app/src/main/res/layout/item_genre.xml" value="0.2" />
-        <entry key="..\:/PDP/miMovie/app/src/main/res/layout/item_genre_mini.xml" value="0.33" />
+        <entry key="..\:/PDP/miMovie/app/src/main/res/layout/item_genre_mini.xml" value="0.22" />
         <entry key="..\:/PDP/miMovie/app/src/main/res/layout/item_movie_home.xml" value="0.33" />
         <entry key="..\:/PDP/miMovie/app/src/main/res/layout/item_movie_latest.xml" value="0.2" />
         <entry key="..\:/PDP/miMovie/app/src/main/res/layout/item_movie_search_latest.xml" value="0.33" />
         <entry key="..\:/PDP/miMovie/app/src/main/res/layout/item_movie_trailer.xml" value="0.33" />
+        <entry key="..\:/PDP/miMovie/app/src/main/res/layout/item_movie_trailer_full.xml" value="0.20416666666666666" />
         <entry key="..\:/PDP/miMovie/app/src/main/res/layout/item_product.xml" value="0.25" />
         <entry key="..\:/PDP/miMovie/app/src/main/res/layout/item_review.xml" value="0.25" />
         <entry key="..\:/PDP/miMovie/app/src/main/res/layout/item_tvshows.xml" value="0.25" />
+        <entry key="..\:/PDP/miMovie/app/src/main/res/menu/actor_detail_tab.xml" value="0.20416666666666666" />
         <entry key="..\:/PDP/miMovie/app/src/main/res/menu/actor_tab.xml" value="0.20416666666666666" />
         <entry key="..\:/PDP/miMovie/app/src/main/res/menu/bottom_nav_menu.xml" value="0.22" />
         <entry key="..\:/PDP/miMovie/app/src/main/res/menu/genre_tab.xml" value="0.20416666666666666" />
         <entry key="..\:/PDP/miMovie/app/src/main/res/menu/movie_detail_tab.xml" value="0.20416666666666666" />
         <entry key="..\:/PDP/miMovie/app/src/main/res/menu/movie_tab.xml" value="0.22" />
+        <entry key="..\:/PDP/miMovie/app/src/main/res/menu/mymenu.xml" value="0.20416666666666666" />
       </map>
     </option>
   </component>

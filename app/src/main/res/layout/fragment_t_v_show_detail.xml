@@ -67,22 +67,10 @@
                     android:layout_marginHorizontal="@dimen/margin_padding_8"
                     android:fontFamily="@font/poppins_semibold"
                     android:textColor="@color/white"
-                    android:textSize="20sp"
+                    android:textSize="@dimen/text_size_24"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/poster"
                     app:layout_constraintTop_toBottomOf="@+id/image" />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tagline"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/margin_padding_8"
-                    android:fontFamily="@font/poppins_regular"
-                    android:textColor="@color/white"
-                    android:textSize="12sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/poster"
-                    app:layout_constraintTop_toBottomOf="@+id/name" />
 
                 <!--                <nl.joery.animatedbottombar.AnimatedBottomBar-->
                 <!--                    android:id="@+id/movieTab"-->
@@ -118,6 +106,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginHorizontal="@dimen/margin_padding_24"
+                    android:layout_marginTop="@dimen/margin_padding_16"
                     android:orientation="vertical"
                     android:visibility="visible"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -125,74 +114,72 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/poster">
 
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/margin_padding_16"
-                        android:fontFamily="@font/poppins_medium"
-                        android:text="@string/rating"
-                        android:textColor="@color/deep_blue_400"
-                        android:textSize="12sp" />
-
                     <androidx.appcompat.widget.LinearLayoutCompat
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
 
-                        <androidx.appcompat.widget.LinearLayoutCompat
+                        <androidx.appcompat.widget.AppCompatTextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal">
+                            android:fontFamily="@font/poppins_medium"
+                            android:text="@string/rating"
+                            android:textColor="@color/deep_blue_400"
+                            android:textSize="@dimen/text_size_14" />
 
-                            <androidx.appcompat.widget.AppCompatTextView
-                                android:id="@+id/ratingNumber"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/gilroy_bold"
-                                android:textAlignment="center"
-                                android:textColor="@color/white" />
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/ratingNumber"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/margin_padding_16"
+                            android:fontFamily="@font/gilroy_bold"
+                            android:textAlignment="center"
+                            android:textColor="@color/white"
+                            android:textSize="16sp" />
 
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:src="@drawable/ic_round_star_rate_24"
-                                app:tint="@color/blue" />
-
-                            <androidx.appcompat.widget.AppCompatTextView
-                                android:id="@+id/voteCount"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="@dimen/margin_padding_16"
-                                android:fontFamily="@font/poppins_regular"
-                                android:textColor="@color/white" />
-
-                        </androidx.appcompat.widget.LinearLayoutCompat>
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/voteCount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/margin_padding_16"
+                            android:fontFamily="@font/poppins_regular"
+                            android:textColor="@color/white"
+                            android:textSize="16sp" />
 
                     </androidx.appcompat.widget.LinearLayoutCompat>
 
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_padding_16"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/margin_padding_16"
+                            android:fontFamily="@font/poppins_medium"
+                            android:text="Genres:"
+                            android:textColor="@color/deep_blue_400"
+                            android:textSize="@dimen/text_size_14" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/allGenresList"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            tools:listitem="@layout/item_genre_mini" />
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/margin_padding_16"
                         android:fontFamily="@font/poppins_medium"
-                        android:text="Genres"
-                        android:textColor="@color/deep_blue_400"
-                        android:textSize="12sp" />
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/allGenresList"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        tools:listitem="@layout/item_genre_mini" />
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/margin_padding_8"
-                        android:fontFamily="@font/poppins_medium"
                         android:text="@string/overview"
                         android:textColor="@color/deep_blue_400"
-                        android:textSize="12sp" />
+                        android:textSize="@dimen/text_size_14" />
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/content"
@@ -215,16 +202,17 @@
 
                         <androidx.appcompat.widget.LinearLayoutCompat
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/margin_padding_16">
 
                             <androidx.appcompat.widget.AppCompatTextView
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:fontFamily="@font/poppins_medium"
-                                android:text="First air date: "
+                                android:text="First air date:"
                                 android:textColor="@color/deep_blue_400"
-                                android:textSize="12sp" />
+                                android:textSize="@dimen/text_size_14" />
 
                             <androidx.appcompat.widget.AppCompatTextView
                                 android:layout_width="0dp"
@@ -233,7 +221,7 @@
                                 android:fontFamily="@font/poppins_medium"
                                 android:text="Status:"
                                 android:textColor="@color/deep_blue_400"
-                                android:textSize="12sp" />
+                                android:textSize="@dimen/text_size_14" />
 
                         </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -247,7 +235,8 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:fontFamily="@font/poppins_regular"
-                                android:textColor="@color/white" />
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/text_size_20" />
 
                             <androidx.appcompat.widget.AppCompatTextView
                                 android:id="@+id/status"
@@ -255,13 +244,15 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:fontFamily="@font/poppins_regular"
-                                android:textColor="@color/white" />
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/text_size_20" />
 
                         </androidx.appcompat.widget.LinearLayoutCompat>
 
                         <androidx.appcompat.widget.LinearLayoutCompat
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/margin_padding_16">
 
                             <androidx.appcompat.widget.AppCompatTextView
                                 android:layout_width="0dp"
@@ -270,7 +261,7 @@
                                 android:fontFamily="@font/poppins_medium"
                                 android:text="Number of seasons:"
                                 android:textColor="@color/deep_blue_400"
-                                android:textSize="12sp" />
+                                android:textSize="@dimen/text_size_14" />
 
                             <androidx.appcompat.widget.AppCompatTextView
                                 android:layout_width="0dp"
@@ -279,7 +270,7 @@
                                 android:fontFamily="@font/poppins_medium"
                                 android:text="Number of episodes:"
                                 android:textColor="@color/deep_blue_400"
-                                android:textSize="12sp" />
+                                android:textSize="@dimen/text_size_14" />
 
                         </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -293,7 +284,8 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:fontFamily="@font/poppins_regular"
-                                android:textColor="@color/white" />
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/text_size_20" />
 
                             <androidx.appcompat.widget.AppCompatTextView
                                 android:id="@+id/number_of_episodes"
@@ -301,36 +293,46 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:fontFamily="@font/poppins_regular"
-                                android:textColor="@color/white" />
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/text_size_20" />
 
                         </androidx.appcompat.widget.LinearLayoutCompat>
                     </androidx.appcompat.widget.LinearLayoutCompat>
 
                     <androidx.appcompat.widget.AppCompatTextView
-                        android:layout_width="wrap_content"
+                        android:id="@+id/btnVideo"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/margin_padding_16"
                         android:fontFamily="@font/poppins_medium"
                         android:text="Videos"
+                        android:background="?android:attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:drawableEnd="@drawable/ic_nav_arrow"
+                        android:focusable="true"
                         android:textColor="@color/deep_blue_400"
-                        android:textSize="12sp" />
+                        android:textSize="@dimen/text_size_24" />
 
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/trailersList"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:visibility="visible"
-                        tools:listitem="@layout/item_movie_trailer" />
+                        android:visibility="visible" />
 
                     <androidx.appcompat.widget.AppCompatTextView
-                        android:layout_width="wrap_content"
+                        android:id="@+id/btnCast"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/margin_padding_16"
+                        android:background="?android:attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:drawableEnd="@drawable/ic_nav_arrow"
+                        android:focusable="true"
                         android:fontFamily="@font/poppins_medium"
                         android:text="Cast"
                         android:textColor="@color/deep_blue_400"
-                        android:textSize="12sp" />
+                        android:textSize="@dimen/text_size_24" />
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/castList"

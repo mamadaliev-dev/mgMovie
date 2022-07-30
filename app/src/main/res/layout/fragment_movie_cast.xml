@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/deep_blue"
+    android:layout_height="match_parent"
+    tools:context=".presentation.cast_list.MovieCastFragment">
+
+   <androidx.recyclerview.widget.RecyclerView
+       android:id="@+id/castList"
+       android:layout_marginHorizontal="@dimen/margin_padding_16"
+       android:layout_width="match_parent"
+       tools:listitem="@layout/item_actor"
+       android:layout_height="match_parent"/>
+
+</FrameLayout>

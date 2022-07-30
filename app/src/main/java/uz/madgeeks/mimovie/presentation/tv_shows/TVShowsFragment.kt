@@ -66,7 +66,7 @@ class TVShowsFragment : BaseFragment<FragmentTVShowsBinding>(FragmentTVShowsBind
 
         viewModel.isLoadingLiveData.observe(viewLifecycleOwner) {
             binding.swipeRefresh.isRefreshing = it
-            if (it == true){
+            if (it == true) {
                 binding.mainLayout.visibility = View.GONE
             } else {
                 binding.mainLayout.visibility = View.VISIBLE
@@ -120,10 +120,19 @@ class TVShowsFragment : BaseFragment<FragmentTVShowsBinding>(FragmentTVShowsBind
                 getPopularTVShows()
                 getAllTopRatedTVShows()
             }
+
+            binding.search.setQuery("", false);
+            binding.mainLayout.visibility = View.VISIBLE
+            binding.searchedTVshowsList.visibility = View.GONE
         }
 
-        binding.search.isActivated = true
 
+        viewModel.getAllTopRatedTVShows()
+        viewModel.getAiringTodayTVShows()
+        viewModel.getOnTheAirTVShows()
+        viewModel.getPopularTVShows()
+
+        binding.search.isActivated = true
         binding.search.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 if (query.isNullOrEmpty()) {
@@ -146,24 +155,25 @@ class TVShowsFragment : BaseFragment<FragmentTVShowsBinding>(FragmentTVShowsBind
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
-                newText?.let { viewModel.getSearchedTVShows(query = it) }
-                viewModel.searchedTVShowsListLiveData.observe(viewLifecycleOwner) {
-                    if (it.isNullOrEmpty()) {
-                        binding.mainLayout.visibility = View.VISIBLE
-                        binding.searchedTVshowsList.visibility = View.GONE
-                    } else {
-                        binding.mainLayout.visibility = View.GONE
-                        binding.searchedTVshowsList.visibility = View.VISIBLE
-                        adapterSearch.setTVShows(it)
+                if (newText.isNullOrEmpty()) {
+                    binding.mainLayout.visibility = View.VISIBLE
+                    binding.searchedTVshowsList.visibility = View.GONE
+                } else {
+                    viewModel.getSearchedTVShows(newText)
+                    viewModel.searchedTVShowsListLiveData.observe(viewLifecycleOwner) {
+                        if (it.isNullOrEmpty()) {
+                            binding.mainLayout.visibility = View.VISIBLE
+                            binding.searchedTVshowsList.visibility = View.GONE
+                        } else {
+                            binding.searchedTVshowsList.visibility = View.VISIBLE
+                            binding.mainLayout.visibility = View.GONE
+                            adapterSearch.setTVShows(it)
+                        }
                     }
                 }
                 return false
             }
         })
 
-        viewModel.getAllTopRatedTVShows()
-        viewModel.getAiringTodayTVShows()
-        viewModel.getOnTheAirTVShows()
-        viewModel.getPopularTVShows()
     }
 }

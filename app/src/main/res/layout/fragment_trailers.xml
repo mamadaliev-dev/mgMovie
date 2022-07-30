@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/deep_blue"
+    tools:context=".presentation.trailers.TrailersFragment">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/allTrailersList"
+        android:layout_width="match_parent"
+        android:layout_marginHorizontal="@dimen/margin_padding_16"
+        android:layout_height="match_parent"
+        tools:listitem="@layout/item_movie_trailer_full" />
+
+</FrameLayout>

@@ -2,17 +2,14 @@ package uz.madgeeks.mimovie.presentation.tv_show_details
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
-import nl.joery.animatedbottombar.AnimatedBottomBar
 import uz.madgeeks.mimovie.BuildConfig
 import uz.madgeeks.mimovie.R
 import uz.madgeeks.mimovie.data.formatDate
@@ -47,9 +44,10 @@ class TVShowDetailFragment :
                 LinearLayoutManager.HORIZONTAL, false)
             trailersList.adapter = adapterTrailer
 
-            castList.layoutManager = GridLayoutManager(requireContext(),
-                3, GridLayoutManager.VERTICAL, false)
+            castList.layoutManager = LinearLayoutManager(requireContext(),
+                LinearLayoutManager.VERTICAL, false)
             castList.adapter = adapterCast
+
 
             allGenresList.layoutManager = LinearLayoutManager(requireContext(),
                 LinearLayoutManager.HORIZONTAL, false)
@@ -67,6 +65,17 @@ class TVShowDetailFragment :
         }
 
         val id = requireArguments().getLong("TV_ID", 0)
+
+        binding.btnVideo.setOnClickListener {
+            val bundle = bundleOf("TV_ID" to id)
+            navController.navigate(R.id.action_TVShowDetailFragment_to_trailersFragment, bundle)
+        }
+
+        binding.btnCast.setOnClickListener {
+            val bundle = bundleOf("TV_ID" to id)
+            navController.navigate(R.id.action_TVShowDetailFragment_to_castFragment, bundle)
+        }
+
 
         viewModel.isLoadingLiveData.observe(viewLifecycleOwner) {
             binding.swipeRefresh.isRefreshing = it
@@ -110,7 +119,6 @@ class TVShowDetailFragment :
                 ratingNumber.text = "${result.vote_average}"
                 firstAirDate.text = result.first_air_date.formatDate()
                 status.text = result.status
-                tagline.text = result.tagline
                 voteCount.text = "${result.vote_count} total votes"
                 numberOfEpisodes.text = "${result.number_of_episodes}"
                 numberOfSeasons.text = "${result.number_of_seasons}"

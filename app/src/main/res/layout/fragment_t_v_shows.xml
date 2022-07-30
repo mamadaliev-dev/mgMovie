@@ -31,8 +31,9 @@
                     android:background="@drawable/shape_search"
                     android:fontFamily="@font/poppins_regular"
                     android:iconifiedByDefault="false"
+                    android:searchIcon="@drawable/ic_search_svgrepo_com"
                     android:queryBackground="@android:color/transparent"
-                    android:queryHint="Search TV Shows"
+                    android:queryHint="Search TV Shows..."
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />

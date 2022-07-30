@@ -14,12 +14,12 @@
             android:id="@+id/action_navigation_home_to_movieDetailFragment"
             app:destination="@id/movieDetailFragment"
             app:enterAnim="@anim/slide_in"
-            app:popUpToSaveState="true"
             app:exitAnim="@anim/fade_out"
             app:popEnterAnim="@anim/fade_in"
             app:popExitAnim="@anim/slide_out"
             app:popUpTo="@id/movieDetailFragment"
-            app:popUpToInclusive="true" />
+            app:popUpToInclusive="true"
+            app:popUpToSaveState="true" />
     </fragment>
 
     <fragment
@@ -45,7 +45,7 @@
             app:popEnterAnim="@anim/fade_in"
             app:popExitAnim="@anim/slide_out"
             app:popUpTo="@id/genreTVFragment"
-            app:popUpToInclusive="true"/>
+            app:popUpToInclusive="true" />
     </fragment>
 
     <fragment
@@ -78,15 +78,6 @@
             app:popUpTo="@id/genreFragment"
             app:popUpToInclusive="true" />
         <action
-            android:id="@+id/action_movieDetailFragment_to_youtubeActivity"
-            app:destination="@id/youtubeActivity"
-            app:enterAnim="@anim/slide_in"
-            app:exitAnim="@anim/fade_out"
-            app:popEnterAnim="@anim/fade_in"
-            app:popExitAnim="@anim/slide_out"
-            app:popUpTo="@id/youtubeActivity"
-            app:popUpToInclusive="true" />
-        <action
             android:id="@+id/action_movieDetailFragment_to_imageViewerFragment"
             app:destination="@id/imageViewerFragment"
             app:enterAnim="@anim/slide_in"
@@ -94,7 +85,7 @@
             app:popEnterAnim="@anim/fade_in"
             app:popExitAnim="@anim/slide_out"
             app:popUpTo="@id/imageViewerFragment"
-            app:popUpToInclusive="true"/>
+            app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_movieDetailFragment_to_actorsFragment"
             app:destination="@id/actorsFragment"
@@ -103,7 +94,25 @@
             app:popEnterAnim="@anim/fade_in"
             app:popExitAnim="@anim/slide_out"
             app:popUpTo="@id/actorsFragment"
-            app:popUpToInclusive="true"/>
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_movieDetailFragment_to_movieTrailersFragment"
+            app:destination="@id/movieTrailersFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/slide_out"
+            app:popUpTo="@id/movieTrailersFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_movieDetailFragment_to_movieCastFragment"
+            app:destination="@id/movieCastFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/slide_out"
+            app:popUpTo="@id/movieCastFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/genreFragment"
@@ -150,7 +159,7 @@
         android:id="@+id/actorsFragment"
         android:name="uz.madgeeks.mimovie.presentation.actors.ActorsFragment"
         android:label="About Actor"
-        tools:layout="@layout/fragment_actors" >
+        tools:layout="@layout/fragment_actors">
         <action
             android:id="@+id/action_actorsFragment_to_imageViewerFragment"
             app:destination="@id/imageViewerFragment"
@@ -159,19 +168,32 @@
             app:popEnterAnim="@anim/fade_in"
             app:popExitAnim="@anim/slide_out"
             app:popUpTo="@id/imageViewerFragment"
-            app:popUpToInclusive="true"/>
-    </fragment>
-    <activity
-        android:id="@+id/youtubeActivity"
-        android:name="uz.madgeeks.mimovie.presentation.YoutubeActivity"
-        android:label="activity_youtube"
-        tools:layout="@layout/activity_youtube" />
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_actorsFragment_to_movieDetailFragment"
+            app:destination="@id/movieDetailFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/slide_out"
+            app:popUpTo="@id/movieDetailFragment"
+            app:popUpToInclusive="true" />
 
+        <action
+            android:id="@+id/action_actorsFragment_to_TVShowDetailFragment"
+            app:destination="@id/TVShowDetailFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/slide_out"
+            app:popUpTo="@id/TVShowDetailFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
     <fragment
         android:id="@+id/navigation_search"
         android:name="uz.madgeeks.mimovie.presentation.search.SearchFragment"
-        tools:layout="@layout/fragment_search"
-        android:label="@string/search" >
+        android:label="@string/search"
+        tools:layout="@layout/fragment_search">
         <action
             android:id="@+id/action_navigation_search_to_movieDetailFragment"
             app:destination="@id/movieDetailFragment"
@@ -186,7 +208,7 @@
         android:id="@+id/navigation_tvshows"
         android:name="uz.madgeeks.mimovie.presentation.tv_shows.TVShowsFragment"
         android:label="TV Shows"
-        tools:layout="@layout/fragment_t_v_shows" >
+        tools:layout="@layout/fragment_t_v_shows">
         <action
             android:id="@+id/action_navigation_tvshows_to_TVShowDetailFragment"
             app:destination="@id/TVShowDetailFragment"
@@ -200,13 +222,13 @@
     <fragment
         android:id="@+id/imageViewerFragment"
         android:name="uz.madgeeks.mimovie.presentation.ImageViewerFragment"
-        tools:layout="@layout/fragment_image_viewer"
-        android:label="" />
+        android:label=""
+        tools:layout="@layout/fragment_image_viewer" />
     <fragment
         android:id="@+id/TVShowDetailFragment"
         android:name="uz.madgeeks.mimovie.presentation.tv_show_details.TVShowDetailFragment"
         android:label=""
-        tools:layout="@layout/fragment_t_v_show_detail" >
+        tools:layout="@layout/fragment_t_v_show_detail">
         <action
             android:id="@+id/action_TVShowDetailFragment_to_imageViewerFragment"
             app:destination="@id/imageViewerFragment"
@@ -224,7 +246,7 @@
             app:popEnterAnim="@anim/fade_in"
             app:popExitAnim="@anim/slide_out"
             app:popUpTo="@id/TVShowDetailFragment"
-            app:popUpToInclusive="true"/>
+            app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_TVShowDetailFragment_to_actorsFragment"
             app:destination="@id/actorsFragment"
@@ -233,13 +255,31 @@
             app:popEnterAnim="@anim/fade_in"
             app:popExitAnim="@anim/slide_out"
             app:popUpTo="@id/actorsFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_TVShowDetailFragment_to_trailersFragment"
+            app:destination="@id/trailersFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/slide_out"
+            app:popUpTo="@id/trailersFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_TVShowDetailFragment_to_castFragment"
+            app:destination="@id/castFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/slide_out"
+            app:popUpTo="@id/castFragment"
             app:popUpToInclusive="true"/>
     </fragment>
     <fragment
         android:id="@+id/genreTVFragment"
         android:name="uz.madgeeks.mimovie.presentation.genre.GenreTVFragment"
         android:label=""
-        tools:layout="@layout/fragment_genre_t_v" >
+        tools:layout="@layout/fragment_genre_t_v">
         <action
             android:id="@+id/action_genreTVFragment_to_TVShowDetailFragment"
             app:destination="@id/TVShowDetailFragment"
@@ -249,5 +289,43 @@
             app:popExitAnim="@anim/slide_out"
             app:popUpTo="@id/TVShowDetailFragment"
             app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/trailersFragment"
+        android:name="uz.madgeeks.mimovie.presentation.trailers.TrailersFragment"
+        android:label="Videos"
+        tools:layout="@layout/fragment_trailers" />
+    <fragment
+        android:id="@+id/movieTrailersFragment"
+        android:name="uz.madgeeks.mimovie.presentation.trailers.MovieTrailersFragment"
+        android:label="Videos" />
+    <fragment
+        android:id="@+id/movieCastFragment"
+        android:name="uz.madgeeks.mimovie.presentation.cast_list.MovieCastFragment"
+        android:label="Casts"
+        tools:layout="@layout/fragment_movie_cast" >
+        <action
+            android:id="@+id/action_movieCastFragment_to_actorsFragment"
+            app:destination="@id/actorsFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/slide_out"
+            app:popUpTo="@id/actorsFragment"
+            app:popUpToInclusive="true"/>
+    </fragment>
+    <fragment
+        android:id="@+id/castFragment"
+        android:name="uz.madgeeks.mimovie.presentation.cast_list.CastFragment"
+        android:label="Casts" >
+        <action
+            android:id="@+id/action_castFragment_to_actorsFragment"
+            app:destination="@id/actorsFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/slide_out"
+            app:popUpTo="@id/actorsFragment"
+            app:popUpToInclusive="true"/>
     </fragment>
 </navigation>

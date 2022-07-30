@@ -49,8 +49,8 @@ class MovieDetailFragment :
 
             allGenresList.adapter = adapter
 
-            castList.layoutManager = GridLayoutManager(requireContext(),
-                3, GridLayoutManager.VERTICAL, false)
+            castList.layoutManager = LinearLayoutManager(requireContext(),
+                LinearLayoutManager.VERTICAL, false)
 
             castList.adapter = adapterCast
 
@@ -102,11 +102,19 @@ class MovieDetailFragment :
             }
         }
 
+        binding.btnVideo.setOnClickListener {
+            val bundle = bundleOf("MOVIE_ID" to id)
+            navController.navigate(R.id.action_movieDetailFragment_to_movieTrailersFragment, bundle)
+        }
+
+        binding.btnCast.setOnClickListener {
+            val bundle = bundleOf("MOVIE_ID" to id)
+            navController.navigate(R.id.action_movieDetailFragment_to_movieCastFragment, bundle)
+        }
 
         viewModel.getMovieDetailById(id)
         viewModel.movieDetailLiveData.observe(viewLifecycleOwner) { result ->
             (activity as AppCompatActivity).supportActionBar?.title = result.originalTitle
-
             binding.apply {
                 content.text = result.overview
                 name.text = result.originalTitle
@@ -114,7 +122,6 @@ class MovieDetailFragment :
                 runtime.text = result.runtime.runtimeToHM()
                 budget.text = "\$${result.budget.toString().changeMoneyType()}"
                 status.text = result.status
-                tagline.text = result.tagline
                 revenue.text = "\$${result.revenue.toString().changeMoneyType()}"
                 voteCount.text = "${result.voteCount} total votes"
 
@@ -164,40 +171,6 @@ class MovieDetailFragment :
                 val bundle = bundleOf("ACTOR_ID" to it)
                 navController.navigate(R.id.action_movieDetailFragment_to_actorsFragment, bundle)
             }
-
         }
-
-//        binding.movieTab.setOnTabSelectListener(object : AnimatedBottomBar.OnTabSelectListener {
-//            override fun onTabSelected(
-//                lastIndex: Int,
-//                lastTab: AnimatedBottomBar.Tab?,
-//                newIndex: Int,
-//                newTab: AnimatedBottomBar.Tab,
-//            ) {
-//                when (newTab.title) {
-//                    "About" -> {
-//                        binding.castList.visibility = View.GONE
-//                        binding.linearLayoutCompat3.visibility = View.VISIBLE
-//                        binding.trailersList.visibility = View.GONE
-//                    }
-//
-//                    "Videos" -> {
-//                        binding.castList.visibility = View.GONE
-//                        binding.linearLayoutCompat3.visibility = View.GONE
-//                        binding.trailersList.visibility = View.VISIBLE
-//                    }
-//
-//                    "Cast" -> {
-//                        binding.castList.visibility = View.VISIBLE
-//                        binding.trailersList.visibility = View.GONE
-//                        binding.linearLayoutCompat3.visibility = View.GONE
-//                    }
-//                }
-//            }
-//
-//            override fun onTabReselected(index: Int, tab: AnimatedBottomBar.Tab) {
-//
-//            }
-//        })
     }
 }

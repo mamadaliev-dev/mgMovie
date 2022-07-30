@@ -10,17 +10,19 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import uz.madgeeks.mimovie.R
 import uz.madgeeks.mimovie.databinding.FragmentGenreTVBinding
 import uz.madgeeks.mimovie.presentation.BaseFragment
+import uz.madgeeks.mimovie.presentation.adapter.TVShowSearchAdapter
 import uz.madgeeks.mimovie.presentation.adapter.TVShowsAdapter
 
 @AndroidEntryPoint
 class GenreTVFragment : BaseFragment<FragmentGenreTVBinding>(FragmentGenreTVBinding::inflate) {
     val viewModel: GenreViewModel by viewModels()
     val adapter by lazy {
-        TVShowsAdapter()
+        TVShowSearchAdapter()
     }
 
     override fun onViewCreate() {
@@ -29,8 +31,8 @@ class GenreTVFragment : BaseFragment<FragmentGenreTVBinding>(FragmentGenreTVBind
 
         (activity as AppCompatActivity).supportActionBar?.title = name
 
-        binding.allTVShowsList.layoutManager = GridLayoutManager(requireContext(),
-            2, GridLayoutManager.VERTICAL, false);
+        binding.allTVShowsList.layoutManager =  LinearLayoutManager(requireContext(),
+            LinearLayoutManager.VERTICAL, false)
         binding.allTVShowsList.adapter = adapter
 
         adapter.setItemClickListener {

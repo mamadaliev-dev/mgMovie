@@ -31,7 +31,6 @@ class TVShowsAdapter : RecyclerView.Adapter<TVShowsAdapter.HomeMovieViewHolder>(
         fun bindView(data: TVShowsResult) {
             binding.apply {
                 name.text = data.original_name
-                ratingBar.rating = (data.vote_average / 2).toFloat()
                 Glide.with(binding.root.context)
                     .load("${BuildConfig.BASE_IMAGE_URL}${data.poster_path}")
                     .into(binding.image)

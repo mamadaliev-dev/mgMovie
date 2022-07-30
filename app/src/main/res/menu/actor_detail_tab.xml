@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:icon="@drawable/ic_about"
+        android:title="Biography" />
+
+    <item
+        android:icon="@drawable/ic_trailer"
+        android:title="Movies" />
+
+    <item
+        android:icon="@drawable/ic_tv"
+        android:title="TV Shows" />
+</menu>

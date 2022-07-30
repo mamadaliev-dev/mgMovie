@@ -6,44 +6,47 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import uz.madgeeks.mimovie.BuildConfig
-import uz.madgeeks.mimovie.data.movie_detail.model.local.CompanyResultDto
-import uz.madgeeks.mimovie.databinding.ItemCompanyBinding
+import uz.madgeeks.mimovie.R
+import uz.madgeeks.mimovie.data.movie_detail.model.remote.response.Cast
+import uz.madgeeks.mimovie.databinding.ItemActorBinding
 
-class CompanyAdapter : RecyclerView.Adapter<CompanyAdapter.MovieCardViewHolder>() {
+class CastLimitlessAdapter : RecyclerView.Adapter<CastLimitlessAdapter.MovieCardViewHolder>() {
 
-    private var itemClickListener: ((id: Int) -> Unit)? = null
+    private var itemClickListener: ((id: Long) -> Unit)? = null
 
-    fun setItemClickListener(f: (id: Int) -> Unit) {
+    fun setItemClickListener(f: (id: Long) -> Unit) {
         itemClickListener = f
     }
 
-    var data = mutableListOf<CompanyResultDto>()
+    var data = mutableListOf<Cast>()
 
     @SuppressLint("NotifyDataSetChanged")
-    fun setCompanies(nData: List<CompanyResultDto>) {
+    fun setPersons(nData: List<Cast>) {
         this.data.clear()
         this.data.addAll(nData)
         notifyDataSetChanged()
     }
 
-    inner class MovieCardViewHolder(private val binding: ItemCompanyBinding) :
+    inner class MovieCardViewHolder(private val binding: ItemActorBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bindData(data: CompanyResultDto) {
+        fun bindData(data: Cast) {
             binding.apply {
-                name.text = data.name
+                name.text = data.original_name
+                character.text = data.character
                 Glide.with(binding.root.context)
-                    .load("${BuildConfig.BASE_IMAGE_URL}${data.logo_path}")
-                    .into(binding.logo)
+                    .load("${BuildConfig.BASE_IMAGE_URL}${data.profilePath}")
+                    .placeholder(R.drawable.ic_actor)
+                    .into(binding.image)
 
                 itemView.setOnClickListener {
-                    itemClickListener?.invoke(data.id)
+                    itemClickListener?.invoke(data.id.toLong())
                 }
             }
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = MovieCardViewHolder(
-        ItemCompanyBinding.inflate(
+        ItemActorBinding.inflate(
             LayoutInflater.from(parent.context), parent, false
         )
     )

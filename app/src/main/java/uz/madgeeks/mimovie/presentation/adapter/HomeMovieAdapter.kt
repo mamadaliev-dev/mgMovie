@@ -32,8 +32,6 @@ class HomeMovieAdapter : RecyclerView.Adapter<HomeMovieAdapter.HomeMovieViewHold
         fun bindView(data: MovieResultDto) {
             binding.apply {
                 name.text = data.originalTitle
-//                genre.text = "Votes: ${data.genreIds}"
-//                ratingBar.rating = data.voteAverage.toFloat()
                 Glide.with(binding.root.context)
                     .load("${BuildConfig.BASE_IMAGE_URL}${data.posterPath}")
                     .into(binding.image)

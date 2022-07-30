@@ -2,10 +2,10 @@
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/deep_blue"
-    android:id="@+id/main"
     android:orientation="vertical"
     tools:context=".presentation.actors.ActorsFragment">
 
@@ -107,33 +107,74 @@
                     android:textSize="@dimen/text_size_24" />
             </androidx.appcompat.widget.LinearLayoutCompat>
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/appCompatTextView"
-                android:layout_width="wrap_content"
+            <nl.joery.animatedbottombar.AnimatedBottomBar
+                android:id="@+id/actorDetailTab"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/margin_padding_16"
-                android:fontFamily="@font/poppins_medium"
-                android:text="@string/biography"
-                android:textColor="@color/deep_blue_400"
-                app:layout_constraintStart_toStartOf="parent"
+                android:background="@color/deep_blue"
+                app:abb_indicatorAppearance="round"
+                app:abb_indicatorColor="@color/deep_blue_0"
+                app:abb_indicatorHeight="4dp"
+                app:abb_indicatorLocation="bottom"
+                app:abb_indicatorMargin="16dp"
+                app:abb_selectedIndex="0"
+                app:abb_selectedTabType="icon"
+                app:abb_tabColor="@color/deep_blue_400"
+                app:abb_tabColorSelected="@color/deep_blue_0"
+                app:abb_tabs="@menu/actor_detail_tab"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayoutCompat" />
 
+            <!--            <androidx.appcompat.widget.AppCompatTextView-->
+            <!--                android:id="@+id/appCompatTextView"-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_marginStart="@dimen/margin_padding_16"-->
+            <!--                android:fontFamily="@font/poppins_medium"-->
+            <!--                android:text="@string/biography"-->
+            <!--                android:textColor="@color/deep_blue_400"-->
+            <!--                app:layout_constraintStart_toStartOf="parent"-->
+            <!--                app:layout_constraintTop_toBottomOf="@+id/allActorsTab" />-->
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/biography"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/margin_padding_16"
+                android:layout_marginTop="@dimen/margin_padding_8"
                 android:fontFamily="@font/poppins_regular"
                 android:textColor="@color/white"
                 android:textSize="@dimen/text_size_18"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/appCompatTextView" />
+                app:layout_constraintTop_toBottomOf="@+id/actorDetailTab" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/movieCastList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margin_padding_16"
+                android:layout_marginTop="@dimen/margin_padding_8"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/actorDetailTab"
+                tools:listitem="@layout/item_actor_credit_in_movie" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/tvCastList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margin_padding_16"
+                android:layout_marginTop="@dimen/margin_padding_8"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/actorDetailTab"
+                tools:listitem="@layout/item_actor_credit_in_movie" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>
