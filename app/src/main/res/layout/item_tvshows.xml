@@ -7,8 +7,8 @@
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/image"
-        android:layout_width="111dp"
-        android:layout_height="167dp"
+        android:layout_width="130dp"
+        android:layout_height="170dp"
         android:layout_gravity="center"
         android:scaleType="centerCrop"
         android:src="@drawable/placeholder"

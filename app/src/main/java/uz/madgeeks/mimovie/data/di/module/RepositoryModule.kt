@@ -21,11 +21,14 @@ import uz.madgeeks.mimovie.domain.genre.GenreRepository
 import uz.madgeeks.mimovie.data.actors_list.model.ActorsListService
 import uz.madgeeks.mimovie.data.search.SearchRepositoryImpl
 import uz.madgeeks.mimovie.data.search.SearchService
+import uz.madgeeks.mimovie.data.season_details.SeasonDetailRepoImpl
+import uz.madgeeks.mimovie.data.season_details.SeasonDetailService
 import uz.madgeeks.mimovie.data.tv_shows.TVShowsRepositoryImpl
 import uz.madgeeks.mimovie.data.tv_shows.TVShowsService
 import uz.madgeeks.mimovie.data.tv_show_details.TVShowDetailRepositoryImpl
 import uz.madgeeks.mimovie.data.tv_show_details.TVShowDetailService
 import uz.madgeeks.mimovie.domain.search.SearchRepository
+import uz.madgeeks.mimovie.domain.season_details.SeasonDetailRepository
 import uz.madgeeks.mimovie.domain.tv_shows.TVShowsRepository
 import uz.madgeeks.mimovie.domain.tv_show_details.TVShowDetailRepository
 
@@ -71,5 +74,10 @@ object RepositoryModule {
     @Provides
     fun provideTVShowsDetailsRepository(mainService: TVShowDetailService): TVShowDetailRepository {
         return TVShowDetailRepositoryImpl(mainService)
+    }
+
+    @Provides
+    fun provideSeasonDetailRepository(mainService: SeasonDetailService): SeasonDetailRepository {
+        return SeasonDetailRepoImpl(mainService)
     }
 }

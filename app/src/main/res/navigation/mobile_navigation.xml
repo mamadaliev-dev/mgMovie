@@ -273,7 +273,16 @@
             app:popEnterAnim="@anim/fade_in"
             app:popExitAnim="@anim/slide_out"
             app:popUpTo="@id/castFragment"
-            app:popUpToInclusive="true"/>
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_TVShowDetailFragment_to_seasonDetailsFragment"
+            app:destination="@id/seasonDetailsFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/slide_out"
+            app:popUpTo="@id/seasonDetailsFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/genreTVFragment"
@@ -303,7 +312,7 @@
         android:id="@+id/movieCastFragment"
         android:name="uz.madgeeks.mimovie.presentation.cast_list.MovieCastFragment"
         android:label="Casts"
-        tools:layout="@layout/fragment_movie_cast" >
+        tools:layout="@layout/fragment_movie_cast">
         <action
             android:id="@+id/action_movieCastFragment_to_actorsFragment"
             app:destination="@id/actorsFragment"
@@ -312,12 +321,12 @@
             app:popEnterAnim="@anim/fade_in"
             app:popExitAnim="@anim/slide_out"
             app:popUpTo="@id/actorsFragment"
-            app:popUpToInclusive="true"/>
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/castFragment"
         android:name="uz.madgeeks.mimovie.presentation.cast_list.CastFragment"
-        android:label="Casts" >
+        android:label="Casts">
         <action
             android:id="@+id/action_castFragment_to_actorsFragment"
             app:destination="@id/actorsFragment"
@@ -326,6 +335,26 @@
             app:popEnterAnim="@anim/fade_in"
             app:popExitAnim="@anim/slide_out"
             app:popUpTo="@id/actorsFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <activity
+        android:id="@+id/youtubeActivity"
+        android:name="uz.madgeeks.mimovie.presentation.YoutubeActivity"
+        android:label="activity_youtube"
+        tools:layout="@layout/activity_youtube" />
+    <fragment
+        android:id="@+id/seasonDetailsFragment"
+        android:name="uz.madgeeks.mimovie.presentation.season_details.SeasonDetailsFragment"
+        android:label="Episodes"
+        tools:layout="@layout/fragment_season_details" >
+        <action
+            android:id="@+id/action_seasonDetailsFragment_to_imageViewerFragment"
+            app:destination="@id/imageViewerFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/slide_out"
+            app:popUpTo="@id/imageViewerFragment"
             app:popUpToInclusive="true"/>
     </fragment>
 </navigation>

@@ -43,7 +43,7 @@ class TVShowDetailRepositoryImpl @Inject constructor(private val service: TVShow
             val response = service.getCredits(id)
             emit(BaseNetworkResult.Loading(false))
             if (response.code() == 200) {
-                emit(BaseNetworkResult.Success(response.body() ?: Credits(0, null,null)))
+                emit(BaseNetworkResult.Success(response.body() ?: Credits(0, null, null)))
             } else {
                 emit(BaseNetworkResult.Error("Xatolik"))
             }

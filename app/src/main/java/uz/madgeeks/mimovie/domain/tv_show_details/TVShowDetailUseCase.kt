@@ -12,7 +12,7 @@ class TVShowDetailUseCase @Inject constructor(private val homeRepository: TVShow
         return homeRepository.getTVShowDetailById(id)
     }
 
-    suspend fun getTVTrailerListById(id : Long): Flow<BaseNetworkResult<MovieTrailerRes>> {
+    suspend fun getTVTrailerListById(id: Long): Flow<BaseNetworkResult<MovieTrailerRes>> {
         return homeRepository.getTVTrailerListById(id)
     }
 

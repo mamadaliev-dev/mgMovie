@@ -19,6 +19,7 @@ import uz.madgeeks.mimovie.data.home.HomeService
 import uz.madgeeks.mimovie.data.movie_detail.model.MovieDetailService
 import uz.madgeeks.mimovie.data.actors_list.model.ActorsListService
 import uz.madgeeks.mimovie.data.search.SearchService
+import uz.madgeeks.mimovie.data.season_details.SeasonDetailService
 import uz.madgeeks.mimovie.data.tv_shows.TVShowsService
 import uz.madgeeks.mimovie.data.tv_show_details.TVShowDetailService
 
@@ -92,5 +93,10 @@ object NetworkModule {
     @Provides
     fun provideTVShowDetailService(retrofit: Retrofit): TVShowDetailService {
         return retrofit.create(TVShowDetailService::class.java)
+    }
+
+    @Provides
+    fun provideSeasonDetailService(retrofit: Retrofit): SeasonDetailService {
+        return retrofit.create(SeasonDetailService::class.java)
     }
 }

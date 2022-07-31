@@ -25,18 +25,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <!--                <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton-->
-                <!--                    android:id="@+id/playBtn"-->
-                <!--                    android:layout_width="wrap_content"-->
-                <!--                    android:layout_height="wrap_content"-->
-                <!--                    android:backgroundTint="#FF0600"-->
-                <!--                    app:icon="@drawable/ic_baseline_play_arrow_24"-->
-                <!--                    app:iconTint="@color/white"-->
-                <!--                    app:layout_constraintBottom_toBottomOf="@+id/image"-->
-                <!--                    app:layout_constraintEnd_toEndOf="@+id/image"-->
-                <!--                    app:layout_constraintStart_toStartOf="parent"-->
-                <!--                    app:layout_constraintTop_toTopOf="parent" />-->
-
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/image"
                     android:layout_width="match_parent"
@@ -45,7 +33,6 @@
                     android:src="@drawable/ic_movie_logo"
                     app:layout_constraintTop_toTopOf="parent"
                     app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.SelectedCornerRadius" />
-
 
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/poster"
@@ -71,35 +58,6 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/poster"
                     app:layout_constraintTop_toBottomOf="@+id/image" />
-
-                <!--                <nl.joery.animatedbottombar.AnimatedBottomBar-->
-                <!--                    android:id="@+id/movieTab"-->
-                <!--                    android:layout_width="match_parent"-->
-                <!--                    android:layout_height="wrap_content"-->
-                <!--                    android:background="@color/deep_blue"-->
-                <!--                    app:abb_indicatorAppearance="round"-->
-                <!--                    app:abb_indicatorColor="@color/deep_blue_0"-->
-                <!--                    app:abb_indicatorHeight="4dp"-->
-                <!--                    app:abb_indicatorLocation="bottom"-->
-                <!--                    app:abb_indicatorMargin="16dp"-->
-                <!--                    app:abb_selectedIndex="0"-->
-                <!--                    app:abb_selectedTabType="icon"-->
-                <!--                    app:abb_tabColor="@color/deep_blue_400"-->
-                <!--                    app:abb_tabColorSelected="@color/deep_blue_0"-->
-                <!--                    app:abb_tabs="@menu/movie_detail_tab"-->
-                <!--                    app:layout_constraintEnd_toEndOf="parent"-->
-                <!--                    app:layout_constraintStart_toStartOf="parent"-->
-                <!--                    app:layout_constraintTop_toBottomOf="@+id/poster" />-->
-
-                <!--                <androidx.recyclerview.widget.RecyclerView-->
-                <!--                    android:id="@+id/castList"-->
-                <!--                    android:layout_width="match_parent"-->
-                <!--                    android:layout_height="match_parent"-->
-                <!--                    android:visibility="gone"-->
-                <!--                    app:layout_constraintBottom_toBottomOf="parent"-->
-                <!--                    app:layout_constraintEnd_toEndOf="parent"-->
-                <!--                    app:layout_constraintStart_toStartOf="parent"-->
-                <!--                    app:layout_constraintTop_toBottomOf="@+id/movieTab" />-->
 
                 <androidx.appcompat.widget.LinearLayoutCompat
                     android:id="@+id/linearLayoutCompat3"
@@ -148,7 +106,7 @@
 
                     </androidx.appcompat.widget.LinearLayoutCompat>
 
-                    <androidx.appcompat.widget.LinearLayoutCompat
+                    <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/margin_padding_16"
@@ -156,21 +114,46 @@
                         android:orientation="horizontal">
 
                         <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/appCompatTextView"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginEnd="@dimen/margin_padding_16"
                             android:fontFamily="@font/poppins_medium"
                             android:text="Genres:"
                             android:textColor="@color/deep_blue_400"
-                            android:textSize="@dimen/text_size_14" />
+                            android:textSize="@dimen/text_size_14"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
 
                         <androidx.recyclerview.widget.RecyclerView
                             android:id="@+id/allGenresList"
-                            android:layout_width="match_parent"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/margin_padding_16"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/appCompatTextView"
+                            app:layout_constraintTop_toTopOf="parent"
                             tools:listitem="@layout/item_genre_mini" />
 
-                    </androidx.appcompat.widget.LinearLayoutCompat>
+                        <ImageView
+                            android:layout_width="12dp"
+                            android:layout_height="0dp"
+                            android:src="@drawable/gradient_left_deep_blue"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/appCompatTextView"
+                            app:layout_constraintStart_toStartOf="@+id/allGenresList"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <ImageView
+                            android:layout_width="12dp"
+                            android:layout_height="0dp"
+                            android:src="@drawable/gradient_right_deep_blue"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:layout_width="wrap_content"
@@ -299,26 +282,91 @@
                         </androidx.appcompat.widget.LinearLayoutCompat>
                     </androidx.appcompat.widget.LinearLayoutCompat>
 
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/btnVideo"
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/margin_padding_16" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/margin_padding_16"
-                        android:fontFamily="@font/poppins_medium"
-                        android:text="Videos"
-                        android:background="?android:attr/selectableItemBackground"
-                        android:clickable="true"
-                        android:drawableEnd="@drawable/ic_nav_arrow"
-                        android:focusable="true"
-                        android:textColor="@color/deep_blue_400"
-                        android:textSize="@dimen/text_size_24" />
+                        android:background="@drawable/shape_item_sec"
+                        android:orientation="vertical"
+                        android:padding="@dimen/margin_padding_8">
 
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/btnSeasons"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="?android:attr/selectableItemBackground"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:fontFamily="@font/poppins_medium"
+                            android:text="Seasons"
+                            android:textColor="@color/deep_blue_400"
+                            android:textSize="@dimen/text_size_24"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
 
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/trailersList"
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/seasonsList"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:visibility="visible"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/btnSeasons"
+                            tools:listitem="@layout/item_movie_trailer" />
+
+                        <ImageView
+                            android:layout_width="25dp"
+                            android:layout_height="0dp"
+                            android:src="@drawable/gradient_left"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/btnSeasons" />
+
+                        <ImageView
+                            android:layout_width="25dp"
+                            android:layout_height="0dp"
+                            android:src="@drawable/gradient_right"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <Space
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:visibility="visible" />
+                        android:layout_height="@dimen/margin_padding_16" />
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/shape_item_sec"
+                        android:orientation="vertical"
+                        android:padding="@dimen/margin_padding_8">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/btnVideo"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="?android:attr/selectableItemBackground"
+                            android:clickable="true"
+                            android:drawableEnd="@drawable/ic_nav_arrow"
+                            android:focusable="true"
+                            android:fontFamily="@font/poppins_medium"
+                            android:text="Videos"
+                            android:textColor="@color/deep_blue_400"
+                            android:textSize="@dimen/text_size_24" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/trailersList"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:visibility="visible"
+                            tools:listitem="@layout/item_movie_trailer" />
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/btnCast"

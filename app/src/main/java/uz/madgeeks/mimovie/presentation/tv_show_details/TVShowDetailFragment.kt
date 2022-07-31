@@ -7,6 +7,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
@@ -19,6 +20,7 @@ import uz.madgeeks.mimovie.presentation.YoutubeActivity
 import uz.madgeeks.mimovie.presentation.adapter.CastAdapter
 import uz.madgeeks.mimovie.presentation.adapter.GenreListMiniAdapter
 import uz.madgeeks.mimovie.presentation.adapter.MovieTrailerAdapter
+import uz.madgeeks.mimovie.presentation.adapter.SeasonsAdapter
 
 @AndroidEntryPoint
 class TVShowDetailFragment :
@@ -37,21 +39,31 @@ class TVShowDetailFragment :
         GenreListMiniAdapter()
     }
 
+    private val adapterSeason by lazy {
+        SeasonsAdapter()
+    }
+
     @SuppressLint("SetTextI18n")
     override fun onViewCreate() {
+
+        val TV_ID = requireArguments().getLong("TV_ID", 0)
+
         binding.apply {
-            trailersList.layoutManager = LinearLayoutManager(requireContext(),
-                LinearLayoutManager.HORIZONTAL, false)
+            trailersList.layoutManager = GridLayoutManager(requireContext(),
+                2, GridLayoutManager.VERTICAL, false)
             trailersList.adapter = adapterTrailer
 
             castList.layoutManager = LinearLayoutManager(requireContext(),
                 LinearLayoutManager.VERTICAL, false)
             castList.adapter = adapterCast
 
-
             allGenresList.layoutManager = LinearLayoutManager(requireContext(),
                 LinearLayoutManager.HORIZONTAL, false)
             allGenresList.adapter = adapter
+
+            seasonsList.layoutManager = LinearLayoutManager(requireContext(),
+                LinearLayoutManager.HORIZONTAL, false)
+            seasonsList.adapter = adapterSeason
         }
 
         adapter.setItemClickListener { id, name ->
@@ -64,18 +76,21 @@ class TVShowDetailFragment :
             navController.navigate(R.id.action_TVShowDetailFragment_to_actorsFragment, bundle)
         }
 
-        val id = requireArguments().getLong("TV_ID", 0)
+        adapterSeason.setItemClickListener {
+            val bundle = bundleOf("SEASON_NUMBER" to it, "TV_ID" to TV_ID)
+            navController.navigate(R.id.action_TVShowDetailFragment_to_seasonDetailsFragment,
+                bundle)
+        }
 
         binding.btnVideo.setOnClickListener {
-            val bundle = bundleOf("TV_ID" to id)
+            val bundle = bundleOf("TV_ID" to TV_ID)
             navController.navigate(R.id.action_TVShowDetailFragment_to_trailersFragment, bundle)
         }
 
         binding.btnCast.setOnClickListener {
-            val bundle = bundleOf("TV_ID" to id)
+            val bundle = bundleOf("TV_ID" to TV_ID)
             navController.navigate(R.id.action_TVShowDetailFragment_to_castFragment, bundle)
         }
-
 
         viewModel.isLoadingLiveData.observe(viewLifecycleOwner) {
             binding.swipeRefresh.isRefreshing = it
@@ -91,11 +106,11 @@ class TVShowDetailFragment :
         }
 
         binding.swipeRefresh.setOnRefreshListener {
-            viewModel.getTVShowDetailById(id)
-            viewModel.getTVTrailerListById(id)
+            viewModel.getTVShowDetailById(TV_ID)
+            viewModel.getTVTrailerListById(TV_ID)
         }
 
-        viewModel.getTVTrailerListById(id)
+        viewModel.getTVTrailerListById(TV_ID)
         viewModel.movieTrailerLiveData.observe(viewLifecycleOwner) {
             it.results.let { item ->
                 if (item != null) {
@@ -104,12 +119,12 @@ class TVShowDetailFragment :
             }
         }
 
-        viewModel.getCredits(id)
+        viewModel.getCredits(TV_ID)
         viewModel.creditsLiveData.observe(viewLifecycleOwner) {
             it.cast?.let { it1 -> adapterCast.setPersons(it1) }
         }
 
-        viewModel.getTVShowDetailById(id)
+        viewModel.getTVShowDetailById(TV_ID)
         viewModel.tvShowDetailsLiveData.observe(viewLifecycleOwner) { result ->
             (activity as AppCompatActivity).supportActionBar?.title = result.original_name
             adapter.setGenres(result.genres)
@@ -122,6 +137,8 @@ class TVShowDetailFragment :
                 voteCount.text = "${result.vote_count} total votes"
                 numberOfEpisodes.text = "${result.number_of_episodes}"
                 numberOfSeasons.text = "${result.number_of_seasons}"
+
+                adapterSeason.setSeasons(result.seasons)
 
                 Glide.with(binding.root.context)
                     .load("${BuildConfig.BASE_IMAGE_URL}${result.backdrop_path}")

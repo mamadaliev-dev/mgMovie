@@ -54,8 +54,8 @@ class MovieDetailFragment :
 
             castList.adapter = adapterCast
 
-            trailersList.layoutManager = LinearLayoutManager(requireContext(),
-                LinearLayoutManager.HORIZONTAL, false)
+            trailersList.layoutManager = GridLayoutManager(requireContext(),
+                2, GridLayoutManager.VERTICAL, false)
 
             trailersList.adapter = adapterTrailer
         }
